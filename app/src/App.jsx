@@ -7,12 +7,27 @@ class App extends React.Component {
     doggoSearchText: ''
   };
 
+  
+  componentDidMount() {
+    console.log('component mounted!');
+    this.fetchDoggos();
+  }
+
+  componentDidUpdate() {
+    if (this.state.doggoSearchText === "") {
+      alert('please enter a search term!');
+      console.log(this.state.doggoSearchText);
+    }
+  }
+
   onSearchInputChange = event => {
     this.setState({ doggoSearchText: event.target.value });
   };
 
   fetchDoggos = event => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
 
     fetch(`https://dog.ceo/api/breed/${this.state.doggoSearchText || 'husky'}/images`)
       .then(res => res.json())
