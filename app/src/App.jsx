@@ -14,9 +14,8 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.doggoSearchText === "") {
-      alert('please enter a search term!');
-      console.log(this.state.doggoSearchText);
+    if (this.state.doggoSearchText.toLowerCase() === "labrador") {
+      console.log('Labradors are so cute!!');
     }
   }
 
